@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+# Find the first keyboard LED device
+DEV=$(ls /sys/class/leds/*kbd*/brightness 2>/dev/null | head -n 1)
+
+if [[ -z "$DEV" ]]; then
+  echo "Keyboard backlight device not found."
+  exit 1
+fi
+
+BASE=$(dirname "$DEV")
+BR="$BASE/brightness"
+MAX="$BASE/max_brightness"
+
+cur=$(cat "$BR")
+max=$(cat "$MAX")
+echo $curr
+echo $max
+case "$1" in
+  i|inc)
+    new=$((cur + 1))
+    ;;
+  d|dec)
+    new=$((cur - 1))
+    ;;
+  t|toggle)
+    if [[ "$cur" -eq 0 ]]; then
+      new=$((max))       # restore to max (or choose custom)
+    else
+      new=0
+    fi
+    ;;
+  ''|help|-h|--help)
+    echo "Usage: $0 [i|d|t|NUMBER]"
+    exit 0
+    ;;
+  *)
+    # if input is a number, set brightness to that
+    if [[ "$1" =~ ^[0-9]+$ ]]; then
+      new="$1"
+    else
+      echo "Invalid input"
+      exit 1
+    fi
+    ;;
+esac
+
+# clamp the value
+if (( new < 0 )); then new=0; fi
+if (( new > max )); then new=max; fi
+
+# write value (requires sudo)
+echo "$new" |tee "$BR" >/dev/null
+

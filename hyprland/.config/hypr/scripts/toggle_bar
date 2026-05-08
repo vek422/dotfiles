@@ -1,0 +1,6 @@
+if pgrep "ironbar" > /dev/null
+then
+    pkill ironbar
+else
+    ironbar &
+fi
