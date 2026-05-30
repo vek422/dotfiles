@@ -1,0 +1,6 @@
+require("lconf.binds.apps")
+require("lconf.binds.window")
+require("lconf.binds.focus")
+require("lconf.binds.workspaces")
+require("lconf.binds.mouse")
+require("lconf.binds.media")

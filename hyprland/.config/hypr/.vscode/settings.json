@@ -1,3 +1,5 @@
 {
-    "workbench.settings.editor": "json"
+  "Lua.workspace.library": [
+    "/usr/share/hypr/stubs"
+  ]
 }
