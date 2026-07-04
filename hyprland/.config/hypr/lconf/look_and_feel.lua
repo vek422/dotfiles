@@ -104,3 +104,11 @@ hl.config({
         new_status = "master",
     },
 })
+
+-- Cursor
+hl.config({
+    cursor = {
+        no_warps                 = true,
+        warp_on_change_workspace = true,
+    },
+})
