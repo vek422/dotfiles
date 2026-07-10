@@ -55,9 +55,11 @@ hl.window_rule({
 
 -- Scratchpad terminal
 hl.window_rule({
-    name  = "scratchpad-term",
-    match = { class = "^(kitty)$", workspace = "special:term" },
-    size  = "75% 55%",
+    name  = "kitty-floating",
+    match = { class = "^(kitty-floating)$" },
+    size  = "80% 50%",
     float = true,
     center = true,
 })
+
+

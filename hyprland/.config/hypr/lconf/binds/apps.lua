@@ -2,6 +2,7 @@ local v = require("lconf.vars")
 
 -- Application launchers
 hl.bind(v.mainMod .. " + RETURN",  hl.dsp.exec_cmd(v.terminal))
+hl.bind(v.mainMod .. " + SHIFT + RETURN", hl.dsp.exec_cmd("kitty --class kitty-floating"))
 hl.bind(v.mainMod .. " + N",       hl.dsp.exec_cmd(v.networkManager))
 hl.bind(v.mainMod .. " + W",       hl.dsp.exec_cmd(v.browser))
 hl.bind(v.mainMod .. " + SPACE",   hl.dsp.exec_cmd(v.tofi))
